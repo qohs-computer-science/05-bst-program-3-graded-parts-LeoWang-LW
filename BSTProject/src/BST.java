@@ -32,29 +32,29 @@ public class BST implements BSTInterface
     {
         if(current == null){
             return new TreeNode(newVal);
-        }
+        } // end if 
 
         if(newVal.compareTo(current.getValue()) <= 0)
         {
             current.setLeft(addHelper(current.getLeft(), newVal));
-        }
+        } // end if 
         else{
             current.setRight(addHelper(current.getRight(), newVal));
-        }
+        } // end else 
         return current; 
     } // end addHelper
 
     public boolean delete(Comparable old){
         return false;
-    }
+    } // end delete
 
     public boolean replace(Comparable old, Comparable toAdd){
         return false; 
-    }
+    } // end replace 
 
     public boolean find(Comparable toFind){
         return false; 
-    }
+    } // end find 
 
 
     public void printInOrder(){
@@ -62,11 +62,14 @@ public class BST implements BSTInterface
     } // end printInOrder
 
     private void printInOrderHelper(TreeNode current){
-        if(current.getValue() != null){
-            printInOrderHelper(current.getLeft()); 
-            System.out.print(current.getValue() + " "); 
-            printInOrderHelper(current.getRight()); 
-        } // end if statement 
+        // base case: empty subtree
+        if(current == null){
+            return;
+        } // end if 
+        // recursive traversal
+        printInOrderHelper(current.getLeft()); 
+        System.out.print(current.getValue() + " "); 
+        printInOrderHelper(current.getRight()); 
     } //end printInOrderHelper
 
     public void printPreOrder(){
@@ -74,11 +77,12 @@ public class BST implements BSTInterface
     } // end printPreOrder
 
     private void printPreOrderHelper(TreeNode current){
-        if(current.getValue() != null){
-            System.out.print(current.getValue() + " "); 
-            printPreOrderHelper(current.getLeft()); 
-            printPreOrderHelper(current.getRight()); 
+        if(current == null){
+            return; 
         } // end if statement 
+        System.out.print(current.getValue() + " "); 
+        printPreOrderHelper(current.getLeft()); 
+        printPreOrderHelper(current.getRight()); 
     } // end printPreOrderHelper
 
     public void printPostOrder(){
@@ -86,11 +90,12 @@ public class BST implements BSTInterface
     } // end printPostOrder
 
     private void printPostOrderHelper(TreeNode current){
-        if(current.getValue() != null){
-            printPostOrderHelper(current.getLeft());
-            printPostOrderHelper(current.getRight()); 
-            System.out.print(current.getValue() + " ");
+        if(current == null){
+            return;
         } // end if statement 
+        printPostOrderHelper(current.getLeft());
+        printPostOrderHelper(current.getRight()); 
+        System.out.print(current.getValue() + " ");
     } // end printPostOrderHelper
 
 

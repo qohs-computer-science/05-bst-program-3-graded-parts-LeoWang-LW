@@ -23,11 +23,12 @@
 
     System.out.println("In order: ");
     chris.printInOrder();
+    System.out.println(); 
     System.out.println("Post Order: ");
     chris.printPostOrder(); 
+    System.out.println(); 
     System.out.println("Pre Order: ");
     chris.printPreOrder(); 
-   
-	
+    System.out.println(); 
  }
 }
