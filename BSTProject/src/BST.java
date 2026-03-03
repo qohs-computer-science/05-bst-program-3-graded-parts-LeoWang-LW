@@ -34,7 +34,7 @@ public class BST implements BSTInterface
             return new TreeNode(newVal);
         }
 
-        if(newVal.compareTo(current.getData()) <= 0)
+        if(newVal.compareTo(current.getValue()) <= 0)
         {
             current.setLeft(addHelper(current.getLeft(), newVal));
         }
@@ -44,14 +44,27 @@ public class BST implements BSTInterface
         return current; 
     } // end addHelper
 
+    public boolean delete(Comparable old){
+        return false;
+    }
+
+    public boolean replace(Comparable old, Comparable toAdd){
+        return false; 
+    }
+
+    public boolean find(Comparable toFind){
+        return false; 
+    }
+
+
     public void printInOrder(){
         printInOrderHelper(root);
     } // end printInOrder
 
     private void printInOrderHelper(TreeNode current){
-        if(current != null){
+        if(current.getValue() != null){
             printInOrderHelper(current.getLeft()); 
-            System.out.print(current.getData() + " "); 
+            System.out.print(current.getValue() + " "); 
             printInOrderHelper(current.getRight()); 
         } // end if statement 
     } //end printInOrderHelper
@@ -61,8 +74,8 @@ public class BST implements BSTInterface
     } // end printPreOrder
 
     private void printPreOrderHelper(TreeNode current){
-        if(current != null){
-            System.out.print(current.getData() + " "); 
+        if(current.getValue() != null){
+            System.out.print(current.getValue() + " "); 
             printPreOrderHelper(current.getLeft()); 
             printPreOrderHelper(current.getRight()); 
         } // end if statement 
@@ -73,12 +86,14 @@ public class BST implements BSTInterface
     } // end printPostOrder
 
     private void printPostOrderHelper(TreeNode current){
-        if(current != null){
+        if(current.getValue() != null){
             printPostOrderHelper(current.getLeft());
             printPostOrderHelper(current.getRight()); 
-            System.out.print(current.getData() + " "); 
+            System.out.print(current.getValue() + " ");
         } // end if statement 
     } // end printPostOrderHelper
+
+
 
 } // end class
 
