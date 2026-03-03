@@ -8,7 +8,7 @@ public interface BSTInterface
 
 	public void add(Comparable newVal);
 	// Creates a new node to store the value being sent then adds the node to the tree in the correct place (remember all left children are less than or equal to their parent and all right children are greater than their parent).  
-
+	
 	public boolean find(Comparable toFind);
 	// searches through the tree to determine if the object being passed is a current element in the tree if it is, return true, otherwise, return false
 
