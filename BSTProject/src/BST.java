@@ -45,16 +45,46 @@ public class BST implements BSTInterface
     } // end addHelper
 
     public boolean delete(Comparable old){
-        return false;
+        if(find(old) == false){
+            return false;
+        }
+        
+        root = deleteHelper(old, root); 
+        return true;
     } // end delete
+
+    private TreeNode deleteHelper(Comparable val, TreeNode subroot){
+        if(subroot == null)
+            return null; 
+
+        if(val.compareTo(subroot.getValue()) <= 0){
+            subroot.setLeft((deleteHelper(val, subroot.getLeft()))); 
+        }
+    }
 
     public boolean replace(Comparable old, Comparable toAdd){
         return false; 
     } // end replace 
 
     public boolean find(Comparable toFind){
-        return false; 
+        return findHelper(root, toFind);
     } // end find 
+
+    private boolean findHelper(TreeNode current, Comparable val){
+        if(current == null){
+            return false; 
+        }
+        if(val == current.getValue()){
+            return true;
+        }
+
+        if(val.compareTo(current.getValue()) <=0){
+            return findHelper(current.getLeft(), val);
+        }
+        else{
+            return findHelper(current.getRight(), val); 
+        }
+    }
 
 
     public void printInOrder(){
