@@ -47,23 +47,63 @@ public class BST implements BSTInterface
     public boolean delete(Comparable old){
         if(find(old) == false){
             return false;
-        }
+        } // end if
         
         root = deleteHelper(old, root); 
+        size--; 
         return true;
     } // end delete
 
     private TreeNode deleteHelper(Comparable val, TreeNode subroot){
         if(subroot == null)
-            return null; 
+            return null;
 
-        if(val.compareTo(subroot.getValue()) <= 0){
-            subroot.setLeft((deleteHelper(val, subroot.getLeft()))); 
-        }
-    }
+        int compare = val.compareTo(subroot.getValue()); 
+
+        if(compare <= 0){
+            subroot.setLeft(deleteHelper(val, subroot.getLeft())); 
+        } // end if 
+        else if(compare > 0){
+            subroot.setRight(deleteHelper(val, subroot.getRight()));
+
+        } // end else if 
+        else{
+            if(subroot.getLeft() == null && subroot.getRight() == null){
+                return null;
+            } // end if 
+            else if(subroot.getLeft() == null){
+                return subroot.getRight();
+            } // end else if 
+            else if(subroot.getRight() == null){
+                return subroot.getLeft(); 
+            } // end else if 
+            else{
+                Comparable sucessorVal = findMin(subroot.getRight()); 
+                subroot.setValue(sucessorVal); 
+                subroot.setRight(deleteHelper(sucessorVal, subroot.getRight()));
+            } // end else 
+        }// end else 
+
+        return subroot; 
+    } // end deleteHelper 
+
+    private Comparable findMin(TreeNode subroot){
+        if(subroot.getLeft() == null){
+            return subroot.getValue();
+        } // end if 
+        return findMin(subroot.getLeft());
+    } // end findMin 
 
     public boolean replace(Comparable old, Comparable toAdd){
-        return false; 
+        if(find(old)){
+            delete(old); 
+            add(toAdd); 
+            return true;
+        } // end if
+        else{
+            add(toAdd);
+            return false; 
+        } // end else
     } // end replace 
 
     public boolean find(Comparable toFind){
@@ -73,18 +113,18 @@ public class BST implements BSTInterface
     private boolean findHelper(TreeNode current, Comparable val){
         if(current == null){
             return false; 
-        }
-        if(val == current.getValue()){
+        } // end if 
+        if(val.compareTo(current.getValue()) == 0){
             return true;
-        }
+        } // end if 
 
         if(val.compareTo(current.getValue()) <=0){
             return findHelper(current.getLeft(), val);
-        }
+        } // end if 
         else{
             return findHelper(current.getRight(), val); 
-        }
-    }
+        } // end else 
+    } // end findHelper
 
 
     public void printInOrder(){
