@@ -51,16 +51,15 @@
 
     System.out.println("Delete method test: "); 
     System.out.println("Tree size before deleting: " + chris.size()); 
-    System.out.println("Delete 'Z' (not in tree): " + chris.delete("z")); 
-    System.out.println("Delete leftmost node: 'A' " + chris.delete("A")); 
-    System.out.println("Delete node with one child: 'E' " + chris.delete("E")); 
-    System.out.println("Delete node that is root or has 2 kids: 'O' " + chris.delete("O")); 
-    System.out.println("Average case: Delete duplicates: 'R'" + chris.delete("R")); 
+    System.out.println("Delete 'Z' (not in tree): Deleted status: " + chris.delete("z")); 
+    System.out.println("Delete leftmost node: 'A' Deleted status:" + chris.delete("A")); 
+    System.out.println("Delete node with one child: 'E' Deleted status: " + chris.delete("E")); 
+    System.out.println("Delete node that is root or has 2 kids: 'O' Deleted status: " + chris.delete("O")); 
+    System.out.println("Average case: Delete duplicates: 'R' Deleted status: " + chris.delete("R")); 
     System.out.println("Tree size after 4 deletions: " + chris.size()); 
     System.out.println("In-order still works after delete: ");
     chris.printInOrder(); 
-
-
+    System.out.println(); 
     System.out.println("Replace method testing: "); 
     System.out.println("Tree before replace: "); 
     chris.printInOrder();
