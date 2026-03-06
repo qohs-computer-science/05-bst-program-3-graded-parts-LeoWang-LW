@@ -86,8 +86,5 @@
     arun.delete("A"); 
     System.out.println("After deleting 1 node: " + arun.isEmpty()); 
     System.out.println("Size after deleting only node: " + arun.size()); 
-
-
-
  }
 }
